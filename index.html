@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幻世珍藏 | 艺术馆</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700;900&family=Plus+Jakarta+Sans:wght@200;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #FCFAF7;
+            --vermillion: #E63946;
+            --jade: #2A9D8F;
+            --ink: #121212;
+            --gold: #D4AF37;
+        }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--ivory);
+            color: var(--ink);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-calligraphy { font-family: 'Ma Shan Zheng', cursive; }
+        .font-serif { font-family: 'Noto Serif SC', serif; }
+        
+        /* 纹理遮罩：增强高级感 */
+        .texture {
+            position: fixed;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .bg-exhibition {
+            background: radial-gradient(circle at 50% 0%, #ffffff 0%, #FCFAF7 100%);
+        }
+
+        /* 艺术光标 */
+        .cursor-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--vermillion);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease-out, opacity 0.3s;
+            mix-blend-mode: multiply;
+        }
+
+        @keyframes reveal-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-reveal { animation: reveal-up 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--ivory); }
+        ::-webkit-scrollbar-thumb { background: var(--vermillion); border-radius: 10px; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body class="bg-exhibition">
+    <div class="texture"></div>
+    <div id="root"></div>
+</body>
+</html>
